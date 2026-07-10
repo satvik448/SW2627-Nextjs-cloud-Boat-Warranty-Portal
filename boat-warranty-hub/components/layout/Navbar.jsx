@@ -123,7 +123,7 @@ export default function Navbar() {
           </svg>
         </Link>
 
-        <Link href="/warranty" style={{
+        <Link href="/admin/login" style={{
           display: 'flex', alignItems: 'center', gap: '8px',
           background: 'var(--red)', color: 'var(--white)',
           fontSize: '0.8rem', fontWeight: 600,
