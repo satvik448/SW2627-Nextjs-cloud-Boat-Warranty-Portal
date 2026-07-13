@@ -12,7 +12,7 @@ export async function findUserByEmail(email){
 export async function findUserById(id){
     return await prisma.user.findUnique({
         where:{
-            id:1,
+            id,
         }
     })
 }
