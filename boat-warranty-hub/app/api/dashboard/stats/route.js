@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDashboardStats } from "../../../../services/dashboard.service";
+import logger from "@/lib/logger";
 
 export async function GET() {
     try {
@@ -15,7 +16,7 @@ export async function GET() {
             }
         );
     } catch (error) {
-        console.error(error);
+        logger.error({ error }, "Failed to fetch dashboard statistics");
 
         return NextResponse.json(
             {

@@ -4,51 +4,54 @@ export default function Hero() {
   return (
     <section style={{
       position: 'relative',
-      background: '#111111',
+      backgroundColor: '#000000', // Solid black background for the left side
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      minHeight: '320px',
-      padding: '48px 64px 80px',
+      minHeight: '600px',
+      padding: '48px 64px 60px',
       overflow: 'hidden',
     }}>
-      {/* Red Geometric Chevron */}
+      {/* Right Side Slashed Image Container */}
       <div style={{
         position: 'absolute',
         right: 0, top: 0, bottom: 0,
-        width: '55%',
-        pointerEvents: 'none',
+        width: '75%', // Extended width to ensure the baked-in quote and panda are both visible
         zIndex: 1,
       }}>
+        {/* White slash border */}
         <div style={{
           position: 'absolute',
-          right: '-40px', top: '-30px',
-          width: '100%', height: '130%',
-          background: 'var(--red)',
-          clipPath: 'polygon(28% 0%, 100% 0%, 100% 100%, 18% 100%, 0% 50%)',
-          opacity: 0.92,
+          left: 0, top: 0, bottom: 0, right: 0,
+          background: '#ffffff',
+          clipPath: 'polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          transform: 'translateX(-4px)', // creates a 4px white border on the slanted edge
         }} />
-        {/* Depth overlay */}
+
+        {/* The Panda Image */}
         <div style={{
           position: 'absolute',
-          right: 0, top: 0,
-          width: '100%', height: '100%',
-          background: 'linear-gradient(135deg, rgba(0,0,0,0.5) 0%, transparent 60%)',
-          clipPath: 'polygon(28% 0%, 100% 0%, 100% 100%, 18% 100%, 0% 50%)',
-          zIndex: 2,
+          left: 0, top: 0, bottom: 0, right: 0,
+          backgroundImage: 'url("/hero-banner.png")',
+          // We use cover and center it to balance showing the quote (middle-left) and panda (right)
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center center', 
+          backgroundRepeat: 'no-repeat',
+          clipPath: 'polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)',
         }} />
       </div>
 
       {/* Left — Content */}
-      <div style={{ position: 'relative', zIndex: 5, maxWidth: '500px' }}>
+      <div style={{ position: 'relative', zIndex: 5, maxWidth: '500px', paddingTop: '20px' }}>
+        
         <span style={{
           display: 'inline-block',
           color: 'var(--red)',
-          fontSize: '0.72rem',
+          fontSize: '0.75rem',
           fontWeight: 700,
           letterSpacing: '2px',
           textTransform: 'uppercase',
-          marginBottom: '14px',
+          marginBottom: '10px',
         }}>
           WARRANTY LOOKUP
         </span>
@@ -61,29 +64,29 @@ export default function Hero() {
           marginBottom: '18px',
           letterSpacing: '-0.5px',
         }}>
-          Verify Your Warranty.<br />
+          Verify Your Warranty<br />
           Instantly<span style={{ color: 'var(--red)' }}>.</span>
         </h1>
 
         <p style={{
           color: '#aaaaaa',
-          fontSize: '0.875rem',
+          fontSize: '0.9rem',
           lineHeight: 1.6,
-          marginBottom: '32px',
+          marginBottom: '36px',
           maxWidth: '420px',
         }}>
           Enter your product serial number to verify warranty status,<br />
           view repair history and download your warranty certificate.
         </p>
 
-        {/* Feature Badges */}
+        {/* Feature Badges (Matching reference Image 2 styling with red borders/icons) */}
         <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap' }}>
           {[
             {
               icon: (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" stroke="#E8001D" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M9 12l2 2 4-4" stroke="#E8001D" strokeWidth="2" strokeLinecap="round"/>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 12l2 2 4-4" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               ),
               title: '100% Genuine',
@@ -91,8 +94,8 @@ export default function Hero() {
             },
             {
               icon: (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" stroke="#E8001D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               ),
               title: 'Instant Results',
@@ -100,11 +103,11 @@ export default function Hero() {
             },
             {
               icon: (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#E8001D" strokeWidth="2" strokeLinecap="round"/>
-                  <polyline points="14,2 14,8 20,8" stroke="#E8001D" strokeWidth="2" strokeLinecap="round"/>
-                  <line x1="9" y1="13" x2="15" y2="13" stroke="#E8001D" strokeWidth="2" strokeLinecap="round"/>
-                  <line x1="9" y1="17" x2="12" y2="17" stroke="#E8001D" strokeWidth="2" strokeLinecap="round"/>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <polyline points="14,2 14,8 20,8" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <line x1="9" y1="13" x2="15" y2="13" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="9" y1="17" x2="12" y2="17" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               ),
               title: 'Digital Certificate',
@@ -113,9 +116,9 @@ export default function Hero() {
           ].map(({ icon, title, sub }) => (
             <div key={title} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <div style={{
-                width: '38px', height: '38px',
+                width: '44px', height: '44px',
                 borderRadius: '50%',
-                border: '1.5px solid rgba(232,0,29,0.5)',
+                border: '1px solid rgba(232,0,29,0.5)',
                 background: 'rgba(232,0,29,0.06)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0,
@@ -123,30 +126,12 @@ export default function Hero() {
                 {icon}
               </div>
               <div>
-                <div style={{ color: 'var(--white)', fontSize: '0.82rem', fontWeight: 700 }}>{title}</div>
+                <div style={{ color: 'var(--white)', fontSize: '0.8rem', fontWeight: 700 }}>{title}</div>
                 <div style={{ color: '#888', fontSize: '0.72rem', marginTop: '2px' }}>{sub}</div>
               </div>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Right — Product Image */}
-      <div style={{ position: 'relative', zIndex: 5, flexShrink: 0 }}>
-        <Image
-          src="/boat_headphones.png"
-          alt="boAt headphones product"
-          width={460}
-          height={360}
-          priority
-          style={{
-            width: '420px',
-            height: 'auto',
-            objectFit: 'contain',
-            filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.7))',
-            transform: 'translateX(20px)',
-          }}
-        />
       </div>
     </section>
   );

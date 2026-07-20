@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { uploadProductWarrantyPdf } from "@/services/upload.service";
 import { getWarrantyPdf } from "../../../../../services/upload.service";
+import logger from "@/lib/logger";
 
 export async function POST(request,context){
     try{
@@ -45,7 +46,7 @@ export async function POST(request,context){
             data:product
         },{status:200})
     }catch(error){
-        console.error(error);
+        logger.error({ error }, "Failed to upload warranty PDF");
         return NextResponse.json({
             success:false,
             message:error.message
@@ -64,12 +65,10 @@ export async function GET(request,context){
 
         const signedUrl = await getWarrantyPdf(productId);
 
-        console.log(signedUrl);
-
         return Response.redirect(signedUrl);
 
     }catch(error){
-
+        logger.error({ error }, "Failed to fetch warranty PDF");
         return NextResponse.json({
             success:false,
             message:error.message

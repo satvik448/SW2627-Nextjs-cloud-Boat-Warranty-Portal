@@ -1,6 +1,7 @@
 import {NextResponse} from "next/server";
 import { loginUser } from "../../../../services/auth.service";
 import { loginSchema } from "../../../../lib/validations";
+import logger from "@/lib/logger";
 
 export async function POST(request){
     try {
@@ -19,15 +20,13 @@ export async function POST(request){
             );
         }
 
-        console.log(validation.data.email)
-
         const user = await loginUser(validation.data);
 
         return NextResponse.json(
             {success:true,data:user},{status:200}
         )
     } catch (error) {
-        console.error(error);
+        logger.error({ error, email: body?.email }, "Failed login API request");
 
         return NextResponse.json({success:false,message:error.message},{status:401})
     }

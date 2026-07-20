@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { loginUser } from "@/services/auth.service";
-
+import logger from "@/lib/logger";
 export const authOptions={
     providers:[
         CredentialsProvider({
@@ -18,12 +18,13 @@ export const authOptions={
 
             async authorize(credentials){
                 try {
-                    console.log("Authorize called");
-                    console.log(credentials);
                     const user = await loginUser(credentials);
-                    console.log(user);
+                    if (user) {
+                        logger.info({ userId: user.id, role: user.role }, "User logged in successfully");
+                    }
                     return user;
-                } catch{
+                } catch(error){
+                    logger.warn({ email: credentials?.email }, "Failed login attempt");
                     return null;
                 }
             }
@@ -50,9 +51,6 @@ export const authOptions={
                 id: token.id,
                 role: token.role,
             };
-
-            console.log(session.user.id);
-            console.log(session.user.role);
 
             return session;
         }

@@ -27,6 +27,16 @@ export default function CTA({ badgeType }) {
         padding: '0 48px',
       }}
     >
+      {/* Background fill to extend the lower white body up to the banner */}
+      <div style={{
+        position: 'absolute',
+        top: '44px', // Starts precisely where the overlap ends
+        left: 0,
+        right: 0,
+        bottom: '-20px', // Extends down to merge with the next section
+        background: '#f8f9fa', // Using a light off-white/white to match lower body (adjust if needed to var(--white))
+        zIndex: -1,
+      }} />
       <div style={{
         background: 'var(--white)',
         borderRadius: '16px',
