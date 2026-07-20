@@ -29,7 +29,7 @@ app/
 │
 ├── api/
 │   │
-│   ├── auth/
+│   ├── auth/      (done)
 │   │   └── [...nextauth]/
 │   │       └── route.js
 │   │
@@ -53,14 +53,6 @@ app/
 │       └── stats/
 │           └── route.js
 │
-├── actions/
-│   │
-│   ├── auth.actions.js
-│   ├── warranty.actions.js
-│   ├── product.actions.js
-│   ├── repair.actions.js
-│   └── upload.actions.js
-│
 ├── middleware.js
 │
 ├── lib/
@@ -73,7 +65,7 @@ app/
 │   ├── constants.js
 │   └── utils.js
 │
-├── services/ ()
+├── services/   (done)
 │   │
 │   ├── warranty.service.js
 │   ├── product.service.js

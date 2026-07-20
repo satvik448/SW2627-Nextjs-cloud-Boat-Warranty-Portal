@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { addProduct, getAllProducts } from "../../../services/products.service";
 import { productSchema } from "../../../lib/validations";
-
+import logger from "@/lib/logger";
 
 export async function GET(){
 
@@ -13,7 +13,7 @@ export async function GET(){
 
     } catch(error){
 
-        console.error(error);
+        logger.error({ error }, "Failed to fetch products");
 
         return NextResponse.json(
             {
@@ -58,7 +58,7 @@ export async function POST(request){
             }
         );
     } catch (error) {
-        console.error(error);
+        logger.error({ error }, "Failed to create product");
 
         return NextResponse.json(
             {success:false,message:"Failed to create product"},

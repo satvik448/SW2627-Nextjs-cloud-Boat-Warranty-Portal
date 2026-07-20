@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { addRepair } from "../../../services/repair.service";
 import { createRepairSchema } from "../../../lib/validations";
-
+import logger from "@/lib/logger";
 
 export async function POST(request){
     try {
@@ -24,7 +24,7 @@ export async function POST(request){
             data:repair
         },{status:201})
     } catch (error) {
-        console.error(error)
+        logger.error({ error }, "Failed to add repair");
         return NextResponse.json({
             success:false,
             message:error.message

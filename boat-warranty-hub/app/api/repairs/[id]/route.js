@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { editRepair, getRepairById, removeRepair } from "../../../../services/repair.service";
 import { updateRepairSchema } from "../../../../lib/validations";
+import logger from "@/lib/logger";
 
 export async function GET(request, context) {
     try {
@@ -12,7 +13,7 @@ export async function GET(request, context) {
             data: repair
         }, { status: 200 });
     } catch (error) {
-        console.error(error);
+        logger.error({ error }, "Failed to fetch repair");
         return NextResponse.json({
             success: false,
             message: error.message
@@ -39,7 +40,7 @@ export async function PUT(request, context) {
             data: newData
         }, { status: 200 });
     } catch (error) {
-        console.error(error);
+        logger.error({ error }, "Failed to update repair");
         return NextResponse.json({
             success: false,
             message: error.message
@@ -57,7 +58,7 @@ export async function DELETE(request, context) {
             data: deletedRepair
         }, { status: 200 });
     } catch (error) {
-        console.error(error);
+        logger.error({ error }, "Failed to delete repair");
         return NextResponse.json({
             success: false,
             message: error.message
