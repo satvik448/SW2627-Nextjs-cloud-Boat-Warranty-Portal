@@ -1,17 +1,17 @@
-import Navbar from '@/components/layout/Navbar';
-import Hero from '@/components/home/Hero';
-import CTA from '@/components/home/CTA';
-import Features from '@/components/home/Features';
-import Footer from '@/components/layout/Footer';
+import LandingNavbar from '@/components/layout/LandingNavbar';
+import LandingHero from '@/components/home/LandingHero';
+
+export const metadata = {
+  title: 'boAt Warranty Hub — Your product. Our promise.',
+  description:
+    'Verify your boAt product warranty instantly. Enter your serial number to check warranty status and download your certificate.',
+};
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
-      <Hero />
-      <CTA />
-      <Features />
-      <Footer />
-    </main>
+    <>
+      <LandingNavbar />
+      <LandingHero />
+    </>
   );
 }
